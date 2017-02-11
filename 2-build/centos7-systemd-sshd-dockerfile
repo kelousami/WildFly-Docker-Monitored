@@ -1,0 +1,42 @@
+# We start from centos:7 image
+FROM centos:7
+
+# My signature
+LABEL maintainer "elousami_khalid@hotmail.com"
+
+# key-values environment variables
+ENV container docker
+ENV myname Khalid Elousami
+
+# As described in centos:7 image, this is necessary to enable systemd
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
+systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+# Install net-tools ans sshd
+RUN yum -y install net-tools; \
+yum -y install openssh-server; \
+yum -y install openssh-clients; \
+yum clean all; \ 
+cp /etc/ssh/sshd_config /etc/ssh/ssh_config.orig; \
+echo "Port 22" >> /etc/ssh/sshd_config; \
+mkdir /root/.ssh/; \
+systemctl enable sshd.service;
+
+# In order to connect via ssh in secure mode, add a public key to destination 
+ADD authorized_key /root/.ssh/
+
+# Add the 
+RUN cat /root/.ssh/authorized_key >> /root/.ssh/authorized_keys;
+
+# Mount external volume
+VOLUME /sys/fs/cgroup
+
+# As described in centos:7 image, this is necessary to enable systemd
+CMD ["/usr/sbin/init"]

@@ -1,0 +1,22 @@
+# application servers variables 
+wildfly10_port: 8080
+wildfly10_administration_port: 9990
+
+# oracle jdk8
+jdk8_download_url: http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm
+jdk8_accept_license: 'Cookie: oraclelicense=accept-securebackup-cookie'
+jdk8_download_folder: /tmp
+jdk8_archive: "{{jdk8_download_folder}}/jdk-8u121-linux-x64.rpm"
+jdk8_md5_checksum: de86e326f9fd98f080cd355081b4a3dc
+jdk8_version: 1.8.0_121
+
+# wildfly wildfly-10.1.0.Final
+wildfly10_download_url: http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz 
+wildfly10_download_folder: /opt
+wildfly10_home_folder: /opt
+wildfly10_archive: "{{wildfly10_download_folder}}/wildfly-10.1.0.Final.tar.gz"
+wildfly10_checksum:
+wildfly10_version: wildfly-10.1.0.Final
+wildfly10_standalone_config_folder: "{{wildfly10_home_folder}}/{{wildfly10_version}}/standalone/configuration"
+wildfly10_admin_username: wildfly
+wildfly10_admin_password: wildfly

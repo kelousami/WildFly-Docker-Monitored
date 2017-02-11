@@ -1,0 +1,8 @@
+nginx-lb1 80
+nginx-rp1 80
+nginx-rp2 80
+jboss-app1 8080;9990
+jboss-app2 8080;9990
+jboss-app3 8080;9990
+postgresql1 NA
+elastic-shinken NA

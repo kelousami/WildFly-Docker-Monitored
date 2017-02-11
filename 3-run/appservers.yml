@@ -1,0 +1,83 @@
+- name: install oracle jdk "{{jdk8_version}}"
+  hosts: app
+  roles:
+   - common
+   - appservers
+
+  tasks:
+   - name: check if jdk "{{jdk8_version}}" is installed
+     ignore_errors: yes 
+     shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
+     register: installed_jdk_version
+
+   - name: downlaod jdk8 "{{jdk8_version}}"
+     when:  "'{{jdk8_version}}' not in installed_jdk_version.stdout"
+     get_url:
+      url: "{{jdk8_download_url}}"
+      checksum: md5:"{{jdk8_md5_checksum}}"
+      dest: "{{jdk8_archive}}"
+      headers: "{{jdk8_accept_license}}"
+
+   - name: install jdk8 "{{jdk8_version}}"
+     when: "'{{jdk8_version}}' not in installed_jdk_version.stdout"
+     yum: 
+      name: "{{jdk8_archive}}"
+      state: present
+
+   - name: cleanup
+     when: "'{{jdk8_version}}' not in installed_jdk_version.stdout" 
+     file: 
+      path: "{{jdk8_archive}}"
+      state: absent
+
+
+- name: install "{{wildfly10_version}}"
+  hosts: app
+  roles:
+   - common
+   - appservers
+
+  tasks:
+   - name: check if wildfly "{{wildfly10_version}}" is installed
+     ignore_errors: yes
+     shell: find "{{wildfly10_home_folder}}" -name "standalone.sh" | grep wildfly
+     register: installed_wildfly_versions
+
+   - name: download "{{wildfly10_version}}"
+     when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+     get_url:
+      url: "{{wildfly10_download_url}}"
+      dest: "{{wildfly10_archive}}"
+
+   - name: unpack and extract "{{wildfly10_version}}"
+     when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+     unarchive:
+      remote_src: yes
+      src: "{{wildfly10_archive}}"
+      dest: "{{wildfly10_home_folder}}"
+
+   - name: check admin user is not yet created
+     ignore_errors: yes
+     shell: grep "{{wildfly10_admin_username}}=" mgmt-users.properties
+     args:
+      chdir: "{{wildfly10_standalone_config_folder}}"
+     register: admin_user_presence
+
+   - name: add admin user to "{{wildfly10_version}}"
+     when: "'{{wildfly10_admin_username}}' not in admin_user_presence.stdout"
+     shell: "'{{wildfly10_home_folder}}'/'{{wildfly10_version}}'/bin/add-user.sh '{{wildfly10_admin_username}}' '{{wildfly10_admin_password}}'"
+
+   - name: check "{{wildfly10_version}}" standalone process is not yet running
+     shell: ps -ef | grep java | grep org.jboss.as.standalone
+     register: wildfly10_standalone_running
+
+   - name: start "{{wildfly10_version}}" in standalone mode
+     when: "'{{wildfly10_version}}' not in wildfly10_standalone_running.stdout"
+     shell: "nohup '{{wildfly10_home_folder}}'/'{{wildfly10_version}}'/bin/standalone.sh -b=0.0.0.0 -bmanagement=0.0.0.0 2>&1 &"
+
+   - name: cleanup 
+     when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+     file:
+      path: "{{wildfly10_archive}}"
+      state: absent
+
