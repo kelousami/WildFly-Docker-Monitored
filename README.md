@@ -1,5 +1,5 @@
 /!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE 
+THIS IS ONLY FOR EDUCATION PURPOSE /!\
 
 # Ansible & Docker example
 In this "experimental" example, I'm creating several centos:7 images usging Docker.
@@ -25,4 +25,4 @@ Also covered technologies :
 
 
 /!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE 
+THIS IS ONLY FOR EDUCATION PURPOSE /!\
