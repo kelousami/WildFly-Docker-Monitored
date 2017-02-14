@@ -21,7 +21,7 @@ Also covered technologies :
 - Postgresql
 - Shinken & Elastic-search
 
--> still in progress 
+--> still in progress 
 
 
 /!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
