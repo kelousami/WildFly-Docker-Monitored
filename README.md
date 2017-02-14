@@ -2,8 +2,8 @@
 THIS IS ONLY FOR EDUCATION PURPOSE /!\
 
 # Ansible & Docker example
-In this "experimental" example, I'm creating several centos:7 images usging Docker.
-All imagaes include SSH Server (so to provision them easily with Ansible)
+In this "experimental" example, I'm creating several centos:7 images using Docker.
+All images include SSH Server (so to provision them easily with Ansible)
 Each image is targeted to specific usage, including: 
 - Load-balancer 
 - Reverse proxy
