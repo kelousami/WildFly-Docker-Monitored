@@ -4,5 +4,5 @@ nginx-rp2 80
 jboss-app1 8080;9990
 jboss-app2 8080;9990
 jboss-app3 8080;9990
-postgresql1 NA
+postgresql1 5432
 elastic-shinken NA
