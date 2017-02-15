@@ -1,7 +1,9 @@
-/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE /!\
+** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
+THIS IS ONLY FOR EDUCATION PURPOSE /_!\ **
 
 # Ansible & Docker example
+
+### Presentation
 In this "experimental" example, I'm creating several centos:7 images using Docker.
 All images include SSH Server (so to provision them easily with Ansible)
 Each image is targeted to specific usage, including: 
@@ -16,32 +18,27 @@ Targeted technologies
 - Docker
 
 Also covered technologies :
-- Nginx
-- Wildfly 10 (with Oracle JDK 8)
-- Postgresql
-- Shinken & Elastic-search
+- `Nginx`
+- `Wildfly 10` (with `Oracle JDK 8`)
+- `Postgresql`
+- `Shinken` & `Elastic-search`
 
--> This is still in progress ..
+> This is still in progress ..
 
-
-/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE /!\
+### Methods
 
 
-# Method
-
-
-# Principles
+### Principles
 - Limit root and previligied users actions as much as possible
 - Create and target users with specific usage to specific machines and apps.
 - Limit users permissions to targeted machines and apps.
 - Separate concerns. Those actions need to be done separatly: 
-    -- Hosting machine (OS) creation, 
-    -- Hosting machine configuration,
-    -- Midlleware binary install, 
-    -- Middleware instance creations,
-    -- Middleware instance configuration and 
-    -- Application deployment
+   * Hosting machine (OS) creation, 
+   * Hosting machine configuration,
+   * Midlleware binary install, 
+   * Middleware instance creations,
+   * Middleware instance configuration and 
+   * Application deployment
 - Idempotence. The result of an action does not change if we run multiple times 
 under the same conditions.
 - Every actions must be verifiable.
@@ -52,7 +49,7 @@ under the same conditions.
   need to run the whole action list.
 
 
-# Steps 
+### Steps 
 Direct application of method and principles on a specific need (requirement) 
 leads to those steps:
 - Create or use existing host
@@ -66,3 +63,5 @@ leads to those steps:
 - Start instances 
 - Deploy applications
 
+** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
+THIS IS ONLY FOR EDUCATION PURPOSE /_**
