@@ -1,7 +1,8 @@
 ** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
 THIS IS ONLY FOR EDUCATION PURPOSE /_!\ **
 
-> _still in progress_
+> _still in progress_ 
+
 > _use or run any code from this respository is on your, and only your,
 > responsibility_
 
@@ -16,8 +17,8 @@ Each image is targeted to specific usage, including:
 - **Web server**
 - **Middle-tier** and **application server**
 - **Database**
-- **Monitoring server** __(will also include tools such elastic stuck, for
-  production like usage)__
+- **Monitoring server** _(will also include tools such elastic stuck, for
+  production like usage)_
 
 Targeted technologies
 - `Ansible`
