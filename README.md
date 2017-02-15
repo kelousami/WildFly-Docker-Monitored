@@ -36,12 +36,12 @@ THIS IS ONLY FOR EDUCATION PURPOSE /!\
 - Create and target users with specific usage to specific machines and apps.
 - Limit users permissions to targeted machines and apps.
 - Separate concerns. Those actions need to be done separatly: 
-    Hosting machine (OS) creation, 
-    Hosting machine configuration,
-    Midlleware binary install, 
-    Middleware instance creations,
-    Middleware instance configuration,
-    Application deployment
+    -- Hosting machine (OS) creation, 
+    -- Hosting machine configuration,
+    -- Midlleware binary install, 
+    -- Middleware instance creations,
+    -- Middleware instance configuration and 
+    -- Application deployment
 - Idempotence. The result of an action does not change if we run multiple times 
 under the same conditions.
 - Every actions must be verifiable.
