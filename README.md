@@ -1,32 +1,35 @@
 ** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
 THIS IS ONLY FOR EDUCATION PURPOSE /_!\ **
 
+> _still in progress_
+> _use or run any code from this respository is on your, and only your,
+> responsibility_
+
 # Ansible & Docker example
 
 ### Presentation
 In this "experimental" example, I'm creating several centos:7 images using Docker.
 All images include SSH Server (so to provision them easily with Ansible)
 Each image is targeted to specific usage, including: 
-- Load-balancer 
-- Reverse proxy
-- Backend middleware (application server)
-- Database
-- Monitoring server (will also include tools such elastic search, for production usage)
+- **Load-balancer**
+- **Reverse proxy**
+- **Web server**
+- **Middle-tier** and **application server**
+- **Database**
+- **Monitoring server** __(will also include tools such elastic stuck, for
+  production like usage)__
 
 Targeted technologies
-- Ansible
-- Docker
+- `Ansible`
+- `Docker`
 
 Also covered technologies :
 - `Nginx`
 - `Wildfly 10` (with `Oracle JDK 8`)
 - `Postgresql`
-- `Shinken` & `Elastic-search`
-
-> This is still in progress ..
+- `Shinken` & `ElasticStack`
 
 ### Methods
-
 
 ### Principles
 - Limit root and previligied users actions as much as possible
