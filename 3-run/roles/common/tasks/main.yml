@@ -1,0 +1,20 @@
+- name: set time on all servers
+  timezone:
+   name: "{{time_zone}}"
+
+- name: install sudo
+  yum:
+   name: sudo
+   state: latest
+
+#
+# replaced by timezone module
+#
+#- name: check time zone on all servers
+#  shell: timedatectl | grep -i "time zone" | awk '{print $3}'
+#  register: time_zone_on_server
+#
+#- name: set time on all servers
+#  shell: "timedatectl set-timezone {{time_zone}}"
+#  when: "'{{time_zone}}' not in time_zone_on_server.stdout"
+#

@@ -1,38 +1,6 @@
-- name: install postgresql "{{postgresql_package_version}}"
+- name: Main postgresql "{{postgresql_package_version}}" provisioning
   hosts: db
   roles:
-   - common
+#  - common
    - dbservers
-
-  tasks:
-   - name: install postgresl repository
-     yum:
-      name: "{{postgresql_package_url}}"
-
-   - name: install postgreql "{{postgresql_package_version}}"
-     yum: 
-      name: "{{postgresql_package_version}}" 
-      state: latest
-
-   # name: create data directory
-   - file:
-      path: "{{postgresql_data_dir}}"
-      state: directory
- 
-#
-#  Commented out as it need to be done once
-#
-   - name: initialize (only once) "{{postgresql_service_name}}"
-     shell: '"{{postgresql_setup_command}}" initdb'
-
-   - name: expose database server
-     shell: "echo \"listen_addresses = '*'\" >> '{{postgresql_data_dir}}'/postgresql.conf"
-
-   - name: expose all databases
-     shell: "echo \"host      all     all     0.0.0.0/0       md5\" >> '{{postgresql_data_dir}}'/pg_hba.conf"
-
-   - name: start postgresql "{{postgresql_service_name}}"
-     service:
-      name: "{{postgresql_service_name}}"
-      state: started
 

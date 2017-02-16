@@ -1,17 +1,11 @@
 ---
-- name: set time on all servers
+- name: common plays 
   hosts: all
   roles:
    - common
 
-  tasks:
-  - name: check time zone on all servers
-    shell: timedatectl | grep -i "time zone" | awk '{print $3}'
-    register: time_zone_on_server
-
-  - name: set time on all servers
-    shell: "timedatectl set-timezone {{time_zone}}"
-    when: "'{{time_zone}}' not in time_zone_on_server.stdout"
+#  tasks:
+#  - include: roles/common/tasks/main.yml
 
 # include web servers plays
 #- include: webservers.yml

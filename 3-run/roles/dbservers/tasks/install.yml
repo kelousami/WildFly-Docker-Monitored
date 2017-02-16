@@ -1,0 +1,8 @@
+- name: install postgresl repository
+  yum:
+   name: "{{postgresql_package_url}}"
+
+- name: install postgreql "{{postgresql_package_version}}"
+  yum: 
+   name: "{{postgresql_package_version}}" 
+   state: latest

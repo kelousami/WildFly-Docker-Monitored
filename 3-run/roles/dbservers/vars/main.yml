@@ -1,4 +1,4 @@
-# postgresql details
+# postgresql package details
 postgresql_package_url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat96-9.6-3.noarch.rpm
 postgresql_package_version: postgresql96-server
 postgresql_db_version: 9.6
@@ -6,3 +6,10 @@ postgresql_data_dir: /var/lib/pgsql/{{postgresql_db_version}}/data
 postgresql_service_name: postgresql-9.6
 postgresql_setup_command: /usr/pgsql-9.6/bin/postgresql96-setup
 postgresql_default_port: 5432
+
+# postgresql user details
+postgresql_username: postgres
+
+# postgresql instance details
+postgresql_port: 5432
+

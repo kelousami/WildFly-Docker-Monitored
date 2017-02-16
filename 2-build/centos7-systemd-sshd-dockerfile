@@ -32,7 +32,7 @@ systemctl enable sshd.service;
 # In order to connect via ssh in secure mode, add a public key to destination 
 ADD authorized_key /root/.ssh/
 
-# Add the 
+# Append the public key into authorized_keys file 
 RUN cat /root/.ssh/authorized_key >> /root/.ssh/authorized_keys;
 
 # Mount external volume

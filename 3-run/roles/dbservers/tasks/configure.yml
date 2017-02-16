@@ -1,0 +1,34 @@
+- name: create user "{{postgresql_username}}"
+  user:
+   name: "{{postgresql_username}}"
+   createhome: no
+   state: present
+
+- name: create test user
+  user: 
+   name: app
+   createhome: no
+   state: present
+
+# name: create data directory
+#- file:
+#   path: "{{postgresql_data_dir}}"
+#   state: directory
+#   owner: "{{postgresql_username}}":"{{postgresql_username}}"
+
+- name: initialize (only once) "{{postgresql_service_name}}"
+  shell: '"{{postgresql_setup_command}}" initdb'
+  ignore_errors: yes
+  become: true
+  become_user: "{{postgresql_username}}" 
+
+- name: expose database server
+  shell: "echo \"listen_addresses = '*'\" >> '{{postgresql_data_dir}}'/postgresql.conf"
+  become: true
+  become_user: "{{postgresql_username}}" 
+
+- name: expose all databases
+  shell: "echo \"host      all     all     0.0.0.0/0       md5\" >> '{{postgresql_data_dir}}'/pg_hba.conf"
+  become: true
+  become_user: "{{postgresql_username}}" 
+

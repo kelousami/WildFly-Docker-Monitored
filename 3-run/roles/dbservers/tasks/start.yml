@@ -1,0 +1,5 @@
+- name: start postgresql "{{postgresql_service_name}}"
+  service:
+   name: "{{postgresql_service_name}}"
+   state: started
+
