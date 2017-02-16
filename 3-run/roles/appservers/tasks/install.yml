@@ -1,0 +1,24 @@
+- name: check if wildfly "{{wildfly10_version}}" is installed
+   ignore_errors: yes
+   shell: find "{{wildfly10_home_folder}}" -name "standalone.sh" | grep wildfly
+   register: installed_wildfly_versions
+
+- name: download "{{wildfly10_version}}"
+   when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+   get_url:
+    url: "{{wildfly10_download_url}}"
+    dest: "{{wildfly10_archive}}"
+
+- name: unpack and extract "{{wildfly10_version}}"
+   when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+   unarchive:
+    remote_src: yes
+    src: "{{wildfly10_archive}}"
+    dest: "{{wildfly10_home_folder}}"
+
+- name: cleanup 
+   when: "'{{wildfly10_version}}' not in installed_wildfly_versions.stdout"
+   file:
+    path: "{{wildfly10_archive}}"
+    state: absent
+

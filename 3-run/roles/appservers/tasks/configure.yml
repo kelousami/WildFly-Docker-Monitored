@@ -1,0 +1,11 @@
+- name: check admin user is not yet created
+   ignore_errors: yes
+   shell: grep "{{wildfly10_admin_username}}=" mgmt-users.properties
+    args:
+    chdir: "{{wildfly10_standalone_config_folder}}"
+    register: admin_user_presence
+
+- name: add admin user to "{{wildfly10_version}}"
+   when: "'{{wildfly10_admin_username}}' not in admin_user_presence.stdout"
+   shell: "'{{wildfly10_home_folder}}'/'{{wildfly10_version}}'/bin/add-user.sh '{{wildfly10_admin_username}}' '{{wildfly10_admin_password}}'"
+

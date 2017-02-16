@@ -1,21 +1,5 @@
-- name: install and start nginx lb
+- name: Main nginx provisioning
   hosts: lb, rp
   roles:
-    - common
-    - webservers
-
-  tasks:
-  - name: install nginx repo
-    yum: 
-     name: http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm 
-
-  - name: install nginx 
-    yum: 
-     name: nginx
-     state: latest
-
-  - name: start nginx
-    service: 
-     name: nginx 
-     state: started
+   - webservers
 

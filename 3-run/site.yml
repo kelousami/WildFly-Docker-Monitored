@@ -4,9 +4,6 @@
   roles:
    - common
 
-#  tasks:
-#  - include: roles/common/tasks/main.yml
-
 # include web servers plays
 #- include: webservers.yml
 
@@ -14,9 +11,9 @@
 #- include: appservers.yml
 
 # include db servers plays
-- include: dbservers.yml
+#- include: dbservers.yml
 
 # include monitoring servers plays
-#- include: monitoringsevers.yml
+- include: monitoringsevers.yml
 
 ...

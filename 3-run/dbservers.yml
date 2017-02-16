@@ -1,6 +1,5 @@
 - name: Main postgresql "{{postgresql_package_version}}" provisioning
   hosts: db
   roles:
-#  - common
    - dbservers
 

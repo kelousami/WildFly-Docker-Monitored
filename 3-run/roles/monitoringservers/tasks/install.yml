@@ -1,0 +1,8 @@
+#- name: install postgresl repository
+#  yum:
+#   name: "{{postgresql_package_url}}"
+
+- name: install "{{elasticsearch_package_rpm}}"
+  yum: 
+   name: "{{elasticsearch_package_url}}" 
+   state: installed

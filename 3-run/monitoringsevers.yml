@@ -1,1 +1,6 @@
-- include: group_vars/monitoringservers
+- name: Main monitoring servers provisioning
+  hosts: mon
+  roles:
+   - java
+   - monitoringservers
+

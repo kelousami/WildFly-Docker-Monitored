@@ -1,0 +1,7 @@
+---
+# main play tasks for appservers
+- include: install.yml
+- include: configure.yml
+- include: start.yml
+- include: deploy.yml
+       

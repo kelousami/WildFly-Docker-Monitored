@@ -1,0 +1,18 @@
+- name: create group "{{elasticsearch_username}}"
+  group:
+   name: "{{elasticsearch_username}}"
+   state: present
+
+- name: create user "{{elasticsearch_username}}"
+  user:
+   name: "{{elasticsearch_username}}"
+   group: "{{elasticsearch_username}}"
+   createhome: no
+   state: present
+
+# name: set ownership of "{{elasticsearch_home_dir}}" to "{{elasticsearch_username}}"
+- file:
+   path: "{{elasticsearch_home_dir}}"
+   owner: "{{elasticsearch_username}}"
+   group: "{{elasticsearch_username}}"
+   recurse: yes

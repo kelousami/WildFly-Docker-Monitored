@@ -1,0 +1,11 @@
+# variables for package download and install
+elasticsearch_package_version: 5.2.1
+elasticsearch_package_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.1.rpm
+elasticsearch_package_rpm: elasticsearch-5.2.1.rpm
+
+# variables for install, configure and run
+elasticsearch_default_port: 9200
+elasticsearch_home_dir: /usr/share/elasticsearch
+elasticsearch_username: elasticsearch
+elasticsearch_cluster_name: elastic_logging_cluster
+elasticsearch_node_name: elastic_logging_node

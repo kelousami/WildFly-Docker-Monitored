@@ -1,0 +1,4 @@
+- name: install oracle jdk "{{jdk8_version}}"
+  hosts: app, mon
+  roles:
+   - java

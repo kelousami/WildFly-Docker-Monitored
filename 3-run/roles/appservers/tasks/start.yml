@@ -1,0 +1,8 @@
+- name: check "{{wildfly10_version}}" standalone process is not yet running
+   shell: ps -ef | grep java | grep org.jboss.as.standalone
+   register: wildfly10_standalone_running
+
+- name: start "{{wildfly10_version}}" in standalone mode
+   when: "'{{wildfly10_version}}' not in wildfly10_standalone_running.stdout"
+   shell: "nohup '{{wildfly10_home_folder}}'/'{{wildfly10_version}}'/bin/standalone.sh -b=0.0.0.0 -bmanagement=0.0.0.0 2>&1 &"
+

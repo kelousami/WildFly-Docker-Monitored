@@ -1,0 +1,25 @@
+- name: check if jdk "{{jdk8_version}}" is installed
+  ignore_errors: yes 
+  shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
+  register: installed_jdk_version
+
+- name: downlaod jdk8 "{{jdk8_version}}"
+  when:  "'{{jdk8_version}}' not in installed_jdk_version.stdout"
+  get_url:
+   url: "{{jdk8_download_url}}"
+   checksum: md5:"{{jdk8_md5_checksum}}"
+   dest: "{{jdk8_archive}}"
+   headers: "{{jdk8_accept_license}}"
+
+- name: install jdk8 "{{jdk8_version}}"
+  when: "'{{jdk8_version}}' not in installed_jdk_version.stdout"
+  yum: 
+   name: "{{jdk8_archive}}"
+   state: present
+
+- name: cleanup
+  when: "'{{jdk8_version}}' not in installed_jdk_version.stdout" 
+  file: 
+   path: "{{jdk8_archive}}"
+   state: absent
+
