@@ -28,7 +28,8 @@ Also covered technologies :
 - `Nginx`
 - `Wildfly 10` (with `Oracle JDK 8`)
 - `Postgresql`
-- `Shinken` & `ElasticStack`
+- `Shinken`
+- `Elastic Stack`
 
 ### Methods
 
