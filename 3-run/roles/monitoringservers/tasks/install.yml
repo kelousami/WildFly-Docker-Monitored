@@ -1,8 +1,14 @@
-#- name: install postgresl repository
-#  yum:
-#   name: "{{postgresql_package_url}}"
+- name: install elasticsearch repository
+  yum_repository: 
+   name: "{{elasticsearch_repository_name}}"
+   description: elasticsearch "{{elasticsearch_package_version}}" repository
+   baseurl: "{{elasticsearch_repository_url}}"
+   gpgkey: "{{elasticsearch_repository_gpg_key}}"
+   gpgcheck: yes
+   enabled: yes
+   state: present
 
-- name: install "{{elasticsearch_package_rpm}}"
+- name: install "'{{elasticsearch_package_rpm}}'-'{{elasticsearch_package_version}}'"
   yum: 
-   name: "{{elasticsearch_package_url}}" 
+   name: "{{elasticsearch_package_rpm}}" 
    state: installed

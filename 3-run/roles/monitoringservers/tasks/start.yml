@@ -1,13 +1,7 @@
-- name: is elasticsearch already running?
-  shell: "ps -ef|grep elasticsearch|grep -v 'grep'"
-  register: elastic_search_process
-  ignore_errors: yes
-
 - name: start elasticsearch
-  shell: "bin/elasticsearch -Ecluster.name='{{elasticsearch_cluster_name}}' -Enode.name='{{elasticsearch_node_name}}'"
-  args:
-   chdir: "{{elasticsearch_home_dir}}"
-  become: true
-  become_user: "{{elasticsearch_username}}"
-  when: "'{{elasticsearch_node_name}}' not in elastic_search_process.stdout"
+  service:
+   name: "{{elasticsearch_service_name}}"
+   state: started
+#  become: true
+#  become_user: "{{elasticsearch_username}}"
    

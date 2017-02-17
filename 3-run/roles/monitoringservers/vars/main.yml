@@ -1,11 +1,30 @@
 # variables for package download and install
 elasticsearch_package_version: 5.2.1
 elasticsearch_package_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.1.rpm
-elasticsearch_package_rpm: elasticsearch-5.2.1.rpm
+elasticsearch_package_rpm: elasticsearch
+elasticsearch_repository_url: https://artifacts.elastic.co/packages/5.x/yum
+elasticsearch_repository_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+elasticsearch_repository_name: elasticsearch-5.x
 
-# variables for install, configure and run
-elasticsearch_default_port: 9200
-elasticsearch_home_dir: /usr/share/elasticsearch
+# variables to install and start
 elasticsearch_username: elasticsearch
+elasticsearch_service_name: elasticsearch.service
+elasticsearch_default_port: 9200
+
+# main elasticsearch folders
+elasticsearch_path_home: /usr/share/elasticsearch
+elasticsearch_path_bin: "{{elasticsearch_home_dir}}/bin"
+elasticsearch_path_plugins: "{{elasticsearch_home_dir}}/plugins"
+elasticsearch_path_conf: /etc/elasticsearch
+elasticsearch_path_scripts: "{{elasticsearcg_path_conf}}/scripts"
+elasticsearch_path_data: /var/lib/elasticsearch
+elasticsearch_path_logs: /var/log/elasticsearch
+
+# main elasticsearch files
+elasticsearch_path_env_conf: /etc/sysconfig/elasticsearch
+elasticsearch_conf_file: elasticsearch.yml
+elasticsearch_log4j_file: log4j2.properties
+
+# core elasticsearch variables
 elasticsearch_cluster_name: elastic_logging_cluster
 elasticsearch_node_name: elastic_logging_node
