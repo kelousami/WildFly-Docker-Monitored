@@ -4,4 +4,10 @@
    state: started
 #  become: true
 #  become_user: "{{elasticsearch_username}}"
+
+- name: start elasticsearch
+  service:
+   name: "{{elasticsearch_service_name}}"
+   enabled: yes 
+
    
