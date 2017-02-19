@@ -1,9 +1,9 @@
-- name: start kibana
+- name: start kibana service
   service:
    name: "{{kibana_service_name}}"
    state: started
 
-- name: start kibana
+- name: enable kibana service
   service:
    name: "{{kibana_service_name}}"
    enabled: yes 

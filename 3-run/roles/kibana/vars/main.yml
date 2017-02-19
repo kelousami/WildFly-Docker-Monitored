@@ -7,7 +7,7 @@ kibana_repository_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 kibana_repository_name: kibana-5.x
 
 # variables to install and start
-kibana_username: elasticsearch
+kibana_username: kibana
 kibana_service_name: kibana.service
 kibana_default_port: 5601
 
