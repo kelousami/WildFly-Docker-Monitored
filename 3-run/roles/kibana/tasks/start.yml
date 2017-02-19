@@ -1,0 +1,11 @@
+- name: start kibana
+  service:
+   name: "{{kibana_service_name}}"
+   state: started
+
+- name: start kibana
+  service:
+   name: "{{kibana_service_name}}"
+   enabled: yes 
+
+   

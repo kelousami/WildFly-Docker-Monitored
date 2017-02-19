@@ -1,0 +1,32 @@
+- name: create group "{{elasticsearch_username}}"
+  group:
+   name: "{{elasticsearch_username}}"
+   state: present
+
+- name: create user "{{elasticsearch_username}}"
+  user:
+   name: "{{elasticsearch_username}}"
+   group: "{{elasticsearch_username}}"
+   createhome: no
+   state: present
+
+# name: set ownership of elasticsearch files to "{{elasticsearch_username}}"
+- file:
+   path: "{{ item }}"
+   with_items:
+    - "{{elasticsearch_path_home}}"
+    - "{{elasticsearch_path_conf}}"
+    - "{{elasticsearch_path_env_conf}}"
+    - "{{elasticsearch_path_data}}"
+    - "{{elasticsearch_path_logs}}"
+   recurse: yes
+   owner: "{{elasticsearch_username}}"
+   group: "{{elasticsearch_username}}"
+
+- name: push "{{elasticsearch_conf_file}}" to server
+  copy:
+   src: "{{elasticsearch_conf_file}}"
+   dest: "{{elasticsearch_path_conf}}/{{elasticsearch_conf_file}}"
+   owner: "{{elasticsearch_username}}"
+   group: "{{elasticsearch_username}}"
+

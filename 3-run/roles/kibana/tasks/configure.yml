@@ -1,0 +1,64 @@
+- name: create group "{{kibana_username}}"
+  group:
+   name: "{{kibana_username}}"
+   state: present
+
+- name: create user "{{kibana_username}}"
+  user:
+   name: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+   createhome: no
+   state: present
+
+# name: set ownership of "{{kibana_path_home}}" to "{{kibana_username}}"
+- file:
+   path: "{{kibana_path_home}}"
+   owner: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+   recurse: yes
+
+# name: set ownership of "{{kibana_path_conf}}" to "{{kibana_username}}"
+- file:
+   path: "{{kibana_path_conf}}"
+   owner: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+   recurse: yes
+
+# name: set ownership of "{{kibana_path_env_conf}}" to "{{kibana_username}}"
+#- file:
+#   path: "{{kibana_path_env_conf}}"
+#   owner: "{{kibana_username}}"
+#   group: "{{kibana_username}}"
+#
+
+# name: set ownership of "{{kibana_path_data}}" to "{{kibana_username}}"
+- file:
+   path: "{{kibana_path_data}}"
+   owner: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+   recurse: yes
+
+# name: set ownership of "{{kibana_path_logs}}" to "{{kibana_username}}"
+- file:
+   path: "{{kibana_path_logs}}"
+   owner: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+   recurse: yes
+   state: directory
+
+#
+- name: push "{{kibana_conf_file}}" to server
+  copy:
+   src: "{{kibana_conf_file}}"
+   dest: "{{kibana_path_conf}}/{{kibana_conf_file}}"
+   owner: "{{kibana_username}}"
+   group: "{{kibana_username}}"
+#
+#- name: push "{{kibana_path_env_conf}}" to server
+#  copy:
+#   src: kibana
+#   dest: "{{kibana_path_env_conf}}"
+#   owner: "{{kibana_username}}"
+#   group: "{{kibana_username}}"
+#
+

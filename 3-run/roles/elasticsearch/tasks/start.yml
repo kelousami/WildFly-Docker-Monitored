@@ -1,0 +1,11 @@
+- name: start elasticsearch service
+  service:
+   name: "{{elasticsearch_service_name}}"
+   state: started
+
+- name: enable elasticsearch service
+  service:
+   name: "{{elasticsearch_service_name}}"
+   enabled: yes 
+
+   

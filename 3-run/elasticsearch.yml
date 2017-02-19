@@ -2,6 +2,6 @@
   hosts: mon
   roles:
    - java
-   - elasticsearch
+   - monitoringservers
    - kibana
 

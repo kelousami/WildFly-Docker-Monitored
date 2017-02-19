@@ -1,0 +1,23 @@
+- name: install kibana repository
+  yum_repository: 
+   name: "{{kibana_repository_name}}"
+   description: kibana "{{kibana_package_version}}" repository
+   baseurl: "{{kibana_repository_url}}"
+   gpgkey: "{{kibana_repository_gpg_key}}"
+   gpgcheck: yes
+   enabled: yes
+   state: present
+
+- name: install "'{{kibana_package_rpm}}'-'{{kibana_package_version}}'"
+  yum: 
+   name: "{{kibana_package_rpm}}" 
+   state: installed
+
+- name: check existence of x-pack plugin
+  shell: "ls {{kibana_path_plugins}}"
+  register: installed_plugins
+
+- name: install x-pack
+  shell: "{{kibana_path_bin}}/kibana-plugin install x-pack"
+  when: "'x-pack' not in installed_plugins.stdout"
+

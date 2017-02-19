@@ -1,0 +1,29 @@
+# variables for package download and install
+kibana_package_version: 5.2.1
+kibana_package_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.1.rpm
+kibana_package_rpm: kibana
+kibana_repository_url: https://artifacts.elastic.co/packages/5.x/yum
+kibana_repository_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+kibana_repository_name: kibana-5.x
+
+# variables to install and start
+kibana_username: elasticsearch
+kibana_service_name: kibana.service
+kibana_default_port: 5601
+
+# main kibana folders
+kibana_path_home: /usr/share/kibana
+kibana_path_bin: "{{kibana_path_home}}/bin"
+kibana_path_plugins: "{{kibana_path_home}}/plugins"
+kibana_path_optimize: "{{kibana_path_home}}/optimize"
+kibana_path_conf: /etc/kibana
+kibana_path_data: /var/lib/kibana
+kibana_path_logs: /var/log/kibana
+
+# main kibana files
+kibana_path_env_conf: /etc/sysconfig/kibana
+kibana_conf_file: kibana.yml
+kibana_log4j_file: log4j2.properties
+
+# core kibana variables
+

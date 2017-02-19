@@ -13,6 +13,12 @@
    name: "{{elasticsearch_package_rpm}}" 
    state: installed
 
+- name: check existence of x-pack plugin
+  shell: "ls {{elasticsearch_path_plugins}}"
+  register: installed_plugins
+
+# @Fixme - same command run manually works fine, not this one! hmmm
 - name: install x-pack
-  shell: "{{elasticsearch_path_bin}}/elasticsearch-plugin install x-pack --batch"
+  shell: "{{elasticsearch_path_bin}}/elasticsearch-plugin install --batch x-pack"
+  when: "'x-pack' not in installed_plugins.stdout"
 
