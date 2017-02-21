@@ -1,0 +1,11 @@
+- name: start logstash service
+  service:
+   name: "{{logstash_service_name}}"
+   state: started
+
+- name: enable logstash service
+  service:
+   name: "{{logstash_service_name}}"
+   enabled: yes 
+
+   

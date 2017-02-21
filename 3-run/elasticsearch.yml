@@ -1,7 +1,6 @@
-- name: Main monitoring servers provisioning
+- name: Main elasticsearch provisioning
   hosts: mon
   roles:
    - java
-   - monitoringservers
-   - kibana
+   - elasticsearch
 

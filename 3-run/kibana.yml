@@ -1,6 +1,6 @@
-- name: Main monitoring servers provisioning
+- name: Main kibana provisioning
   hosts: mon
   roles:
    - java
-   - monitoringservers
+   - kibana
 

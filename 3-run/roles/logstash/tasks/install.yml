@@ -1,0 +1,25 @@
+- name: install "which"
+  yum:
+   name: which
+   state: installed
+
+- name: install logstash repository
+  yum_repository: 
+   name: "{{logstash_repository_name}}"
+   description: logstash "{{logstash_package_version}}" repository
+   baseurl: "{{logstash_repository_url}}"
+   gpgkey: "{{logstash_repository_gpg_key}}"
+   gpgcheck: yes
+   enabled: yes
+   state: present
+
+- name: install "'{{logstash_package_rpm}}'-'{{logstash_package_version}}'"
+  yum: 
+   name: "{{logstash_package_rpm}}" 
+   state: installed
+
+- name: install "{{logstash_service_name}}" using the provided system-install script
+  shell: "{{logstash_path_bin}}/system-install"
+  register: service_install
+  failed_when: "'Successfully' not in service_install.stdout"
+  

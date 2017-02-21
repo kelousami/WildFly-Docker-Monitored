@@ -1,17 +1,16 @@
 ---
-- name: common plays 
-  hosts: all
-  roles:
-   - common
+
+# include common plays
+- include: common.yml
 
 # include web servers plays
-#- include: webservers.yml
+- include: webservers.yml
 
 # include app servers plays
-#- include: appservers.yml
+- include: appservers.yml
 
 # include db servers plays
-#- include: dbservers.yml
+- include: dbservers.yml
 
 # include monitoring servers plays
 - include: monitoringsevers.yml

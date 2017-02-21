@@ -1,4 +1,4 @@
-- name: check if jdk "{{jdk8_version}}" is installed
+- name: check if jdk8 "{{jdk8_version}}" is installed
   ignore_errors: yes 
   shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
   register: installed_jdk_version

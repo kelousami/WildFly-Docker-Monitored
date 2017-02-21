@@ -1,0 +1,69 @@
+- name: create group "{{logstash_username}}"
+  group:
+   name: "{{logstash_username}}"
+   state: present
+
+- name: create user "{{logstash_username}}"
+  user:
+   name: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+   createhome: no
+   state: present
+
+# name: set ownership of "{{logstash_path_home}}" to "{{logstash_username}}"
+- file:
+   path: "{{logstash_path_home}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+   recurse: yes
+
+# name: set ownership of "{{logstash_path_conf}}" to "{{logstash_username}}"
+- file:
+   path: "{{logstash_path_conf}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+   recurse: yes
+
+# name: set ownership of "{{logstash_path_data}}" to "{{logstash_username}}"
+- file:
+   path: "{{logstash_path_data}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+   recurse: yes
+
+# name: set ownership of "{{logstash_path_logs}}" to "{{logstash_username}}"
+- file:
+   path: "{{logstash_path_logs}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+   recurse: yes
+   state: directory
+
+- name: push "{{logstash_conf_file}}" to server
+  copy:
+   src: "{{logstash_conf_file}}"
+   dest: "{{logstash_path_conf}}/{{logstash_conf_file}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+
+- name: push "{{logstash_log4j_file}}" to server
+  copy:
+   src: "{{logstash_log4j_file}}"
+   dest: "{{logstash_path_conf}}/{{logstash_log4j_file}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+
+- name: push "{{logstash_jvm_options}}" to server
+  copy:
+   src: "{{logstash_jvm_options}}"
+   dest: "{{logstash_path_conf}}/{{logstash_jvm_options}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+
+- name: push "{{logstash_startup_options}}" to server
+  copy:
+   src: "{{logstash_startup_options}}"
+   dest: "{{logstash_path_conf}}/{{logstash_startup_options}}"
+   owner: "{{logstash_username}}"
+   group: "{{logstash_username}}"
+

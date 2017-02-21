@@ -1,0 +1,6 @@
+- name: Main logstash provisioning
+  hosts: mon
+  roles:
+   - java
+   - logstash
+

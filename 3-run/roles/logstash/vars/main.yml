@@ -1,0 +1,29 @@
+# variables for package download and install
+logstash_package_version: 5.2.1
+logstash_package_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.1.rpm
+logstash_package_rpm: logstash
+logstash_repository_url: https://artifacts.elastic.co/packages/5.x/yum
+logstash_repository_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+logstash_repository_name: logstash-5.x
+
+# variables to install and start
+logstash_username: logstash
+logstash_service_name: logstash.service
+logstash_default_port: 9600
+
+# main logstash folders
+logstash_path_home: /usr/share/logstash
+logstash_path_bin: "{{logstash_path_home}}/bin"
+logstash_path_plugins: "{{logstash_path_home}}/plugins"
+logstash_path_conf: /etc/logstash
+logstash_path_data: /var/lib/logstash
+logstash_path_logs: /var/log/logstash
+
+# main logstash files
+logstash_conf_file: logstash.yml
+logstash_log4j_file: log4j2.properties
+logstash_jvm_options: jvm.options
+logstash_startup_options: startup.options
+
+# core logstash variables
+
