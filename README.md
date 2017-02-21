@@ -1,5 +1,5 @@
 ** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE /_!\ **
+NOT YET ! /_!\ **
 
 > _still in progress_ 
 
@@ -69,4 +69,4 @@ leads to those steps:
 - Deploy applications
 
 ** _/!\ PLEASE DO NOT USE THIS IN PRODUCTION !!!
-THIS IS ONLY FOR EDUCATION PURPOSE /_**
+NOT YET ! /_**
