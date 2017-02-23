@@ -1,0 +1,6 @@
+- name: install "{{wildfly10_version}}"
+  hosts: app
+  roles:
+   - java 
+   - wildfly
+

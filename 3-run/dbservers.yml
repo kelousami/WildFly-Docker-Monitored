@@ -1,5 +1,6 @@
-- name: Main postgresql "{{postgresql_package_version}}" provisioning
-  hosts: db
-  roles:
-   - dbservers
+---
 
+# include postgresql plays
+- include: postgresql
+
+...

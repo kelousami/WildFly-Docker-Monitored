@@ -1,5 +1,6 @@
-- name: Main nginx provisioning
-  hosts: lb, rp
-  roles:
-   - webservers
+---
 
+# include nginx plays
+- include: nginx.yml 
+
+...

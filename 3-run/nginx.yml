@@ -1,0 +1,5 @@
+- name: Main nginx provisioning
+  hosts: lb, rp
+  roles:
+   - nginx
+
