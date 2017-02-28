@@ -1,8 +1,9 @@
-- name: Main monitoring servers provisioning
-  hosts: mon
-  roles:
-   - java
-   - elasticsearch
-   - kibana
-   - logstash
+---
 
+# include Elastic Stuck plays
+- include: elasticsearch.yml
+- include: kibana.tml
+- include: logstash.yml
+- include: shinken.yml
+
+...

@@ -1,6 +1,6 @@
-- name: install "{{wildfly10_version}}"
-  hosts: app
-  roles:
-   - java 
-   - appservers
+---
 
+# include wildfly plays
+- include: wildfly.yml
+
+...
