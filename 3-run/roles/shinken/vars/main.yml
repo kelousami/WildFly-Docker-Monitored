@@ -1,29 +1,28 @@
 # variables for package download and install
-shinken_package_version: 
-shinken_package_url: 
-shinken_package_rpm: shinken
-shinken_repository_url:
-shinken_repository_gpg_key: 
-shinken_repository_name: 
+shinken_package_version: latest
+shinken_package_name: shinken
 
 # variables to install and start
 shinken_username: shinken
 shinken_service_name: shinken.service
-shinken_default_port: 
+shinken_default_port: 8125 
 
 # main shinken folders
-shinken_path_home: /usr/share/shinken
-shinken_path_bin: "{{shinken_path_home}}/bin"
-shinken_path_plugins: "{{shinken_path_home}}/plugins"
-shinken_path_optimize: "{{shinken_path_home}}/optimize"
 shinken_path_conf: /etc/shinken
-shinken_path_data: /var/lib/shinken
-shinken_path_logs: /var/log/shinken
+shinken_path_var: /var/lib/shinken
+shinken_path_bin: /usr/bin/shinken
+shinken_path_run: /var/run/shinken
+shinken_path_log: /var/log/shinken
 
 # main shinken files
-shinken_path_env_conf: 
-shinken_conf_file: 
-shinken_log4j_file: 
+shinken_start_cmd: /etc/init.d/shinken
+shinken_conf_file: shinken.cfg
+shinken_log_file: 
+
+# modules
+# - 
+shinken_path_modules: /etc/shinken/modules
+shinken_module_webui_conf_file: webui.cfg
 
 # core shinken variables
 

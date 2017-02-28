@@ -1,11 +1,16 @@
-- name: start shinken service
-  service:
-   name: "{{shinken_service_name}}"
-   state: started
+#- name: start shinken service
+# service:
+#  name: "{{shinken_service_name}}"
+#  state: started
+#
+#- name: enable shinken service
+#  service:
+#   name: "{{shinken_service_name}}"
+#   enabled: yes 
+#
+# TODO install shinken as service  
+#
 
-- name: enable shinken service
-  service:
-   name: "{{shinken_service_name}}"
-   enabled: yes 
-
-   
+- name: start shinken
+  shell: "{{shinken_start_cmd}} start"
+  

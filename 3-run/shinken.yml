@@ -1,5 +1,6 @@
 - name: Main shinken provisioning
   hosts: mon
   roles:
+   - python
    - shinken
 

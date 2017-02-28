@@ -1,64 +1,15 @@
-- name: create group "{{shinken_username}}"
-  group:
-   name: "{{shinken_username}}"
-   state: present
 
-- name: create user "{{shinken_username}}"
-  user:
-   name: "{{shinken_username}}"
-   group: "{{shinken_username}}"
-   createhome: no
-   state: present
-
-# name: set ownership of "{{shinken_path_home}}" to "{{shinken_username}}"
-- file:
-   path: "{{shinken_path_home}}"
-   owner: "{{shinken_username}}"
-   group: "{{shinken_username}}"
-   recurse: yes
-
-# name: set ownership of "{{shinken_path_conf}}" to "{{shinken_username}}"
-- file:
-   path: "{{shinken_path_conf}}"
-   owner: "{{shinken_username}}"
-   group: "{{shinken_username}}"
-   recurse: yes
-
-# name: set ownership of "{{shinken_path_env_conf}}" to "{{shinken_username}}"
-#- file:
-#   path: "{{shinken_path_env_conf}}"
-#   owner: "{{shinken_username}}"
-#   group: "{{shinken_username}}"
-#
-
-# name: set ownership of "{{shinken_path_data}}" to "{{shinken_username}}"
-- file:
-   path: "{{shinken_path_data}}"
-   owner: "{{shinken_username}}"
-   group: "{{shinken_username}}"
-   recurse: yes
-
-# name: set ownership of "{{shinken_path_logs}}" to "{{shinken_username}}"
-- file:
-   path: "{{shinken_path_logs}}"
-   owner: "{{shinken_username}}"
-   group: "{{shinken_username}}"
-   recurse: yes
-   state: directory
-
-#
 - name: push "{{shinken_conf_file}}" to server
   copy:
    src: "{{shinken_conf_file}}"
    dest: "{{shinken_path_conf}}/{{shinken_conf_file}}"
    owner: "{{shinken_username}}"
    group: "{{shinken_username}}"
-#
-#- name: push "{{shinken_path_env_conf}}" to server
-#  copy:
-#   src: shinken
-#   dest: "{{shinken_path_env_conf}}"
-#   owner: "{{shinken_username}}"
-#   group: "{{shinken_username}}"
-#
+
+- name: push "{{shinken_module_webui_conf_file}}" to server
+  copy:
+   src: "{{shinken_module_webui_conf_file}}"
+   dest: "{{shinken_path_modules}}/{{shinken_module_webui_conf_file}}"
+   owner: "{{shinken_username}}"
+   group: "{{shinken_username}}"
 

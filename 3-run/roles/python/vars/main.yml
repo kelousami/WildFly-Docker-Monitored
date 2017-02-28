@@ -1,0 +1,12 @@
+# variables for python
+# python_package_name: python
+# python_package_version: 27  # which is 2.7
+#
+# IUS repository
+# ius_repository_name: ius
+# ius_repository_url: https://centos7.iuscommunity.org/ius-release.rpm
+#
+# This is commented out as version 2.7.5 is already installed.
+#
+
+

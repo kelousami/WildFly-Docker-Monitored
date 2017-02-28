@@ -1,0 +1,23 @@
+#- name: install "{{ius_repository_name}}"
+#  yum: 
+#   name: "{{ius_repository_url}}"
+#   state: installed
+#
+#- name: install "{{python_package_name}}" "{{python_package_version}}"
+#  yum:
+#   name: "{{python_package_name}}{{python_package_version}}"
+#   state: installed
+#
+# This is commented out as version 2.7.5 is already installed.
+# 
+
+- name: install pip
+  yum: 
+   name: python-pip
+   state: latest
+
+- name: insall pycurl
+  yum:
+   name: python-pycurl
+   state: latest
+

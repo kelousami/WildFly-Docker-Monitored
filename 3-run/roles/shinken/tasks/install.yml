@@ -1,23 +1,16 @@
-- name: install shinken repository
-  yum_repository: 
-   name: "{{shinken_repository_name}}"
-   description: shinken "{{shinken_package_version}}" repository
-   baseurl: "{{shinken_repository_url}}"
-   gpgkey: "{{shinken_repository_gpg_key}}"
-   gpgcheck: yes
-   enabled: yes
+- name: create group "{{shinken_username}}"
+  group:
+   name: "{{shinken_username}}"
    state: present
 
-- name: install "'{{shinken_package_rpm}}'-'{{shinken_package_version}}'"
-  yum: 
-   name: "{{shinken_package_rpm}}" 
-   state: installed
+- name: create user "{{shinken_username}}"
+  user:
+   name: "{{shinken_username}}"
+   group: "{{shinken_username}}"
+   createhome: no
+   state: present
 
-- name: check existence of x-pack plugin
-  shell: "ls {{shinken_path_plugins}}"
-  register: installed_plugins
-
-- name: install x-pack
-  shell: "{{shinken_path_bin}}/shinken-plugin install x-pack"
-  when: "'x-pack' not in installed_plugins.stdout"
-
+- name: install "{{shinken_package_name}}-{{shinken_package_version}}"
+  pip: 
+   name: "{{shinken_package_name}}" 
+   state: "{{shinken_package_version}}"
