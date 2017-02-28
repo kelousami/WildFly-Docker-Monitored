@@ -1,6 +1,5 @@
 - name: Main shinken provisioning
   hosts: mon
   roles:
-   - java
    - shinken
 
