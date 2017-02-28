@@ -1,0 +1,29 @@
+# variables for package download and install
+shinken_package_version: 5.2.1
+shinken_package_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.1.rpm
+shinken_package_rpm: shinken
+shinken_repository_url: https://artifacts.elastic.co/packages/5.x/yum
+shinken_repository_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+shinken_repository_name: shinken-5.x
+
+# variables to install and start
+shinken_username: shinken
+shinken_service_name: shinken.service
+shinken_default_port: 5601
+
+# main shinken folders
+shinken_path_home: /usr/share/shinken
+shinken_path_bin: "{{shinken_path_home}}/bin"
+shinken_path_plugins: "{{shinken_path_home}}/plugins"
+shinken_path_optimize: "{{shinken_path_home}}/optimize"
+shinken_path_conf: /etc/shinken
+shinken_path_data: /var/lib/shinken
+shinken_path_logs: /var/log/shinken
+
+# main shinken files
+shinken_path_env_conf: /etc/sysconfig/shinken
+shinken_conf_file: shinken.yml
+shinken_log4j_file: log4j2.properties
+
+# core shinken variables
+

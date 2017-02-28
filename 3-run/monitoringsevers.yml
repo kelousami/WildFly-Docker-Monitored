@@ -1,9 +1,9 @@
-
 ---
 
 # include Elastic Stuck plays
 - include: elasticsearch.yml
 - include: kibana.tml
 - include: logstash.yml
+- include: shenken.yml
 
 ...

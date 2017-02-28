@@ -1,0 +1,23 @@
+- name: install shinken repository
+  yum_repository: 
+   name: "{{shinken_repository_name}}"
+   description: shinken "{{shinken_package_version}}" repository
+   baseurl: "{{shinken_repository_url}}"
+   gpgkey: "{{shinken_repository_gpg_key}}"
+   gpgcheck: yes
+   enabled: yes
+   state: present
+
+- name: install "'{{shinken_package_rpm}}'-'{{shinken_package_version}}'"
+  yum: 
+   name: "{{shinken_package_rpm}}" 
+   state: installed
+
+- name: check existence of x-pack plugin
+  shell: "ls {{shinken_path_plugins}}"
+  register: installed_plugins
+
+- name: install x-pack
+  shell: "{{shinken_path_bin}}/shinken-plugin install x-pack"
+  when: "'x-pack' not in installed_plugins.stdout"
+
